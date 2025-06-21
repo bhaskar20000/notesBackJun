@@ -9,7 +9,7 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 const dbPath = path.join(__dirname, "notesApp.db");
 let db;
@@ -175,7 +175,7 @@ app.post("/user/save", authFunction, async (request, response) => {
     const reponseSaveData = await db.run(saveDataQuery);
     response.send({ message: "Data saved successfully" });
   } else {
-    const userIdQuery = `
+    const userIdQuery = ` 
     SELECT id FROM user WHERE name = "${username}";
   `;
     const userIdGotFromDb = await db.get(userIdQuery);
